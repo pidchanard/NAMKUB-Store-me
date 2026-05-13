@@ -29,7 +29,7 @@ export class MemberlistComponent {
         
         searchMember(){
           console.log(`Searching for Member : ${this.searchQuery1}`);
-          this.http.get<Users[]>(`http://localhost:3000/sreachuser?q=${this.searchQuery1}`)
+          this.apiservice.searchUsers(this.searchQuery1)
             .subscribe({
               next: (response: Users[]) => {
                 console.log('Search result:', response);

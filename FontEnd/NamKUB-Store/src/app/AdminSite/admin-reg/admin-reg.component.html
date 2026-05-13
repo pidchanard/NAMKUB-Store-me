@@ -1,41 +1,40 @@
 <div class="form-container">
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login">
-    <h1 style="text-align: center">Deliver-register</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-card">
+    <h1 class="form-title">Admin Register</h1>
   
-    <div class="input-field">
-      <input formControlName="firstname" placeholder="Firstname" maxlength="50" required class="box" />
-      <input formControlName="lastname" placeholder="Lastname" maxlength="50" required class="box" />
+    <div class="input-row">
+      <div class="input-field">
+        <input formControlName="firstname" placeholder="Firstname" maxlength="50" required />
+      </div>
+      <div class="input-field">
+        <input formControlName="lastname" placeholder="Lastname" maxlength="50" required />
+      </div>
     </div>
   
     <div class="input-field">
-      <input formControlName="phone" placeholder="Your phone" maxlength="10" required class="box" style="width: 500px;" />
+      <input formControlName="phone" placeholder="Your phone" maxlength="10" required />
     </div>
+    
     <div class="input-field">
-      <input type="text" formControlName="username" placeholder="username" maxlength="50" required class="box" style="width: 500px;" />
+      <input type="text" formControlName="username" placeholder="Username" maxlength="50" required />
     </div>
+    
     <div class="input-field">
-      <input type="email" formControlName="email" placeholder="Email" maxlength="50" required class="box"
-        style="width: 500px;" />
-    </div>
-  
-    <div class="input-field">
-      <input type="password" formControlName="password" placeholder="Password" maxlength="50" required class="box"
-        style="width: 500px;" />
+      <input type="email" formControlName="email" placeholder="Email" maxlength="50" required />
     </div>
   
     <div class="input-field">
-      <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" maxlength="50" required
-        class="box" style="width: 500px;" />
+      <input type="password" formControlName="password" placeholder="Password" maxlength="50" required />
     </div>
   
-    <button type="submit" class="btn" style="color:#fff; background-color:#6fb9fa; border-radius: 50px;">Register</button>
+    <div class="input-field">
+      <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" maxlength="50" required />
+    </div>
   
-   
-    <a routerLink='/login'>Already have an account? Sign in</a>
-    <hr>
+    <button type="submit" class="submit-btn">Register</button>
   
-
-  
-  
+    <div class="form-footer">
+      <a routerLink='/' class="login-link">Already have an account? Sign in</a>
+    </div>
   </form>
 </div>

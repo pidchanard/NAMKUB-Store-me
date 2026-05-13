@@ -41,7 +41,7 @@ const routes: Routes = [
   {path: 'products',component:ProductComponent,canActivate: [AuthGuard],data:{roles:['admin','customer','Deliver']}},
   {path: 'contact',component:ContactComponent,canActivate: [AuthGuard],data:{roles:['admin','customer','Deliver']}},
   {path: 'about-us',component:AboutUsComponent,canActivate: [AuthGuard],data:{roles:['admin','customer','Deliver']}},
-  {path: 'adminRegister',component:AdminRegComponent,canActivate: [AuthGuard],data:{roles:['admin']}},
+  {path: 'adminRegister',component:AdminRegComponent},
   {path: 'cart',component:CartComponent},
   {path: 'adminhome',component:AdminHomeComponent,canActivate: [AuthGuard],data:{roles:['admin']}},
   {path: 'dashboard' ,component:DashboardComponent,canActivate: [AuthGuard],data:{roles:['admin']}},

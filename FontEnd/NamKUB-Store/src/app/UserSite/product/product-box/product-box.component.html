@@ -1,18 +1,28 @@
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4" *ngFor="let product of products | async">
-      <div class="card">
-        <img [src]="product.Product_Picture" class="card-img-top" alt="Product Image">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.Product_Name }}</h5>
-          <p class="card-text">ขนาด: {{ product.Product_Size }} มิลลิลิตร</p>
-          <p class="card-text">ราคา: {{ product.Product_Price }} บาท</p>
-          <!-- Use 'product' instead of 'Products' -->
-          <a class="btn btn-primary d-flex justify-content-center" (click)="addToCart(product)">ใส่รถเข็น {{ product.Product_Price }}.-</a>
-              
-          
+<ng-container *ngIf="products | async as productList">
+  <div class="product-grid" *ngIf="productList.length; else noProducts">
+    <div class="product-card" *ngFor="let product of productList">
+      <div class="product-image">
+        <img [src]="product.Product_Picture" alt="">
+      </div>
+      <div class="product-content">
+        <h5>{{ product.Product_Name }}</h5>
+        <div class="product-meta">
+          <span>{{ product.Product_Size }} ml</span>
+          <strong>{{ product.Product_Price }} บาท</strong>
         </div>
+        <button class="add-cart-btn" type="button" (click)="addToCart(product)">
+          <i class="bi bi-cart-plus"></i>
+          ใส่รถเข็น {{ product.Product_Price }}.-
+        </button>
       </div>
     </div>
   </div>
-</div>
+
+  <ng-template #noProducts>
+    <div class="no-products">
+      <i class="bi bi-search"></i>
+      <h3>ไม่มีสินค้า</h3>
+      <p *ngIf="searchText">ไม่พบสินค้าที่ตรงกับ "{{ searchText }}"</p>
+    </div>
+  </ng-template>
+</ng-container>

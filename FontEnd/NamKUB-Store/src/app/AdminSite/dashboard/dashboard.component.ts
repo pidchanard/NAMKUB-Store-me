@@ -62,9 +62,7 @@ export class DashboardComponent implements OnInit {
 
   submitMonth() {
     console.log(`Searching for summary data for month: ${this.selectedMonth}`);
-    const apiUrl = 'http://localhost:3000/findMonth';
-  
-    this.http.get<Summary[]>(`${apiUrl}?q=${this.selectedMonth}`).subscribe({
+    this.apiService.searchSummariesByMonth(this.selectedMonth).subscribe({
       next: (response: Summary[]) => {
         console.log('Data received:', response);
         this.summaries.next(response); // อัพเดตข้อมูลใน BehaviorSubject เมื่อมีการค้นหาเดือน

@@ -29,7 +29,7 @@ export class OrderComponent {
 
   searchOrder(){
     console.log(`Searching for Member : ${this.searchQuery1}`);
-    this.http.get<Orders[]>(`http://localhost:3000/findOrder?q=${this.searchQuery1}`)
+    this.apiservice.searchOrders(this.searchQuery1)
       .subscribe({
         next: (response: Orders[]) => {
           console.log('Search result:', response);

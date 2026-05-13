@@ -1,53 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between" style="height: 80px; margin-top: 0; padding: 0.25rem 1rem;">
-  <div class="d-flex align-items-center">
-    <a class="navbar-brand" routerLink="/home" style="font-size: 14px; margin-right: 1rem;">
-      <img src="namkub.png" alt=" logo namkub" style="width: 100px;">
+<nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
+  <div class="d-flex align-items-center nav-left">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="namkub.png" alt="logo namkub">
     </a>
-    <ul class="navbar-nav ">
+    <ul class="navbar-nav">
       <li class="nav-item" routerLinkActive="active-nav-link">
-        <a class="nav-link " routerLink="/home" style="font-size: 14px; padding: 0.5rem 1rem; font-weight:bold;">Home</a>
+        <a class="nav-link" routerLink="/home">Home</a>
       </li>
       <li class="nav-item" routerLinkActive="active-nav-link">
-        <a class="nav-link" routerLink="/products" style="font-size: 14px; padding: 0.5rem 1rem; font-weight:bold;">Products</a>
+        <a class="nav-link" routerLink="/products">Products</a>
       </li>
       <li class="nav-item" routerLinkActive="active-nav-link">
-        <a class="nav-link" routerLink="/contact" style="font-size: 14px; padding: 0.5rem 1rem; font-weight:bold;">Contact Us</a>
+        <a class="nav-link" routerLink="/contact">Contact Us</a>
       </li>
       <li class="nav-item" routerLinkActive="active-nav-link">
-        <a class="nav-link" routerLink="/about-us" style="font-size: 14px; padding: 0.5rem 1rem; font-weight:bold;">About Us</a>
+        <a class="nav-link" routerLink="/about-us">About Us</a>
       </li>
     </ul>
   </div>
-  <form class="d-flex" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" style="background-color:#AFD5F0;" aria-label="Search">
-    <button class="btn btn-outline-dark" type="submit" style="background-color:#AFD5F0;">Search</button>
+
+  <form class="nav-search" role="search" (ngSubmit)="submitSearch()">
+    <input
+      class="form-control"
+      type="search"
+      placeholder="Search products"
+      aria-label="Search"
+      [value]="searchTerm"
+      (input)="searchProducts($event)"
+    >
+    <button class="btn" type="submit" aria-label="Search">
+      <i class="bi bi-search"></i>
+    </button>
   </form>
+
   <div class="ms-auto d-flex align-items-center profile">
-    <div class="toggle">
-      <div class="moon-sun">
-        <i class="bi" [ngClass]="isDarkMode ? 'bi bi-sun' : 'bi bi-moon'"></i>
-      </div>
-      <span class="mode-text">{{ isDarkMode ? '' : '' }}</span>
-      <label class="switch">
-        <input type="checkbox" (click)="toggleDarkMode()" [checked]="isDarkMode">
-        <span class="slider round"></span>
-      </label>
-    </div>
-    <span *ngIf="username" (click)="toggleProfilePopup()" class="nav-link" style="font-size: 16px; margin-right: 1rem; cursor: pointer;">
+    <button class="theme-icon-btn" type="button" (click)="toggleDarkMode()" [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
+      <i class="bi" [ngClass]="isDarkMode ? 'bi-sun' : 'bi-moon'"></i>
+    </button>
+
+    <span *ngIf="username" (click)="toggleProfilePopup()" class="nav-link user-name">
       {{ username }}
     </span>
+
     <div id="profilePopup" class="profile-popup" [ngStyle]="{ 'visibility': isProfilePopupVisible ? 'visible' : 'hidden' }">
       <div class="profile-popup-content">
-        <img src="{{picture}}" alt="Profile image" class="profile-image">
+        <img [src]="picture || defaultProfileImage" alt="" class="profile-image" (error)="useDefaultProfileImage()">
         <p>Hello {{ username }}</p>
         <button class="edit-profile-btn" routerLink="/edit-profile" (click)="editProfile()">Edit Profile</button>
       </div>
     </div>
-    
-    
-    
-    <a class="nav-link bi bi-cart3" routerLink="/cart" style="font-size: 20px; text-decoration: none;">&nbsp; &nbsp;</a>
 
-    <a class="nav-link bi bi-box-arrow-right" (click)="logout()" href="/" style="font-size: 20px; text-decoration: none;">&nbsp;</a>
+    <a class="nav-link cart-link" routerLink="/cart" aria-label="Cart">
+      <i class="bi bi-cart3"></i>
+      <span class="cart-badge" *ngIf="(cartCount$ | async) as cartCount">{{ cartCount }}</span>
+    </a>
+
+    <a class="nav-link logout-link" (click)="logout()" href="/" aria-label="Logout">
+      <i class="bi bi-box-arrow-right"></i>
+    </a>
   </div>
 </nav>

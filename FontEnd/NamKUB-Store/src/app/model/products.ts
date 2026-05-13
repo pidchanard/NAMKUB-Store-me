@@ -35,6 +35,7 @@ export interface Users{
   email : string,
   phone :string, 
   role : string,
+  picture?: string,
 }
 
 export interface Orders{

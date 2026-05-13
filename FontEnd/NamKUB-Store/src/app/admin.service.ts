@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
+import { NAMKUBAPIService } from './Service/namkub-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  private adminUrl = 'http://localhost:3000/deliver_register'; // URL for admin registration API
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private apiService: NAMKUBAPIService) { }
 
   // Function for sending admin registration data
   registerAdmin(adminData: any): Observable<any> {
@@ -16,10 +15,10 @@ export class RegisterService {
       'Content-Type': 'application/json'
     });
 
-    console.log('Sending admin registration request to:', this.adminUrl);
+    console.log('Sending mock admin registration request');
     console.log('Request body:', adminData);
 
-    return this.http.post(this.adminUrl, adminData, { headers }).pipe(
+    return this.apiService.registerAdmin(adminData).pipe(
       tap(response => {
         console.log('Admin registration response:', response);
       }),

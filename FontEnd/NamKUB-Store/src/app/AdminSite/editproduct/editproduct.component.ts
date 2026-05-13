@@ -101,7 +101,7 @@ export class EditproductComponent {
         SupUnitPrice: this.addproductform.value.SupUnitPrice
       };
     
-      this.http.post('http://localhost:3000/products', formData).subscribe({
+      this.productService.addProduct(formData).subscribe({
         next: (response) => {
           console.log('Product added successfully:', response);
           this.showPopup(); // เรียกใช้ฟังก์ชันแสดงผลสำเร็จ
@@ -167,7 +167,7 @@ export class EditproductComponent {
         
       };
 
-      this.http.put(`http://localhost:3000/products/${Product_ID}`, formData).subscribe({
+      this.productService.updateProduct(Product_ID, formData).subscribe({
         next: () => {
           console.log('Product updated successfully');
           console.log('Product updated successfully');
@@ -202,7 +202,7 @@ export class EditproductComponent {
     }).then((result) => {
       
       if (result.isConfirmed) {
-        this.http.delete(`http://localhost:3000/products/${Product_ID}`).subscribe({
+        this.productService.deleteProduct(Product_ID).subscribe({
           next: () => {
             console.log('Product deleted successfully');
             swalWithBootstrapButtons.fire({
@@ -270,7 +270,7 @@ export class EditproductComponent {
       };
 
       // ทำการอัปเดตสินค้าผ่าน API โดยใช้ Product_ID ที่เลือกไว้
-      this.http.put(`http://localhost:3000/products/${this.selectedProductId}`, formData).subscribe({
+      this.productService.updateProduct(this.selectedProductId, formData).subscribe({
         next: () => {
           console.log('Product updated successfully');
           this.showPopup1(); 
@@ -287,7 +287,7 @@ export class EditproductComponent {
 }
   searchProducts() {
     console.log(`Searching for products with query: ${this.searchQuery}`);
-    this.http.get<Products[]>(`http://localhost:3000/search?q=${this.searchQuery}`)
+    this.productService.searchProducts(this.searchQuery)
       .subscribe({
         next: (response: Products[]) => {
           console.log('Search result:', response); 
@@ -323,7 +323,7 @@ export class EditproductComponent {
         Sup_Name : this.AddSupplierform.value.Sup_Name
       };
     
-      this.http.post('http://localhost:3000/addsupplier', formData).subscribe({
+      this.productService.addSupplier(formData).subscribe({
         next: (response) => {
           console.log('Supplier added successfully:', response);
           this.showPopup2(); // เรียกใช้ฟังก์ชันแสดงผลสำเร็จ

@@ -1,36 +1,69 @@
-<div class="form-container">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login">
-    <h1 style="text-align: center">Register</h1>
-
-    <div class="input-field">
-      <input formControlName="firstname" placeholder="Firstname" maxlength="50" required class="box" />&nbsp;
-      <input formControlName="lastname" placeholder="Lastname" maxlength="50" required class="box" />
+<main class="auth-page">
+  <section class="auth-card register-card">
+    <div class="auth-copy">
+      <p class="eyebrow">Create account</p>
+      <h1>Register</h1>
+      <p class="subtitle">สมัครสมาชิกเพื่อสั่งซื้อน้ำดื่มกับ Namkub ได้เร็วขึ้น</p>
     </div>
 
-    <div class="input-field">
-      <input formControlName="phone" placeholder="Your phone" maxlength="10" required class="box" />&nbsp;
-      <input type="text" formControlName="username" placeholder="Username" maxlength="50" required class="box" />
-    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="field-grid">
+        <label class="field">
+          <span class="bi bi-person-fill"></span>
+          <input formControlName="firstname" placeholder="Firstname" maxlength="50" required />
+        </label>
 
-    <div class="input-field">
-      <input type="email" formControlName="email" placeholder="Email" maxlength="50" required class="box"
-        style="width: 508px;" />  <br>
-      <input type="file" formControlName="picture" (change)="onFileChange($event)" accept="image/*" style="width: 508px;" >
-      
-    </div>
+        <label class="field">
+          <span class="bi bi-person-badge-fill"></span>
+          <input formControlName="lastname" placeholder="Lastname" maxlength="50" required />
+        </label>
+      </div>
 
-    <div class="input-field">
-      <input type="password" formControlName="password" placeholder="Password" maxlength="50" required class="box"
-        style="width: 508px;" />
-    </div>
+      <div class="field-grid">
+        <label class="field">
+          <span class="bi bi-telephone-fill"></span>
+          <input formControlName="phone" placeholder="Your phone" maxlength="10" required />
+        </label>
 
-    <div class="input-field">
-      <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" maxlength="50" required
-        class="box" style="width: 508px;" (keyup.enter)="onSubmit()"/>
-    </div>
-    <button type="submit" class="btn" style="color:#fff; background-color:#6fb9fa; border-radius: 50px;">Register</button>
-    <div class="text-center pt-4 text-muted">Already have an account? <a id="forget" routerLink="/">Sign in</a>
-    </div>
+        <label class="field">
+          <span class="bi bi-at"></span>
+          <input type="text" formControlName="username" placeholder="Username" maxlength="50" required />
+        </label>
+      </div>
 
-  </form>
-</div> 
+      <label class="field wide-field">
+        <span class="bi bi-envelope-fill"></span>
+        <input type="email" formControlName="email" placeholder="Email" maxlength="50" required />
+      </label>
+
+      <label class="file-field">
+        <span class="bi bi-image-fill"></span>
+        <input type="file" formControlName="picture" (change)="onFileChange($event)" accept="image/*" />
+      </label>
+
+      <label class="field wide-field">
+        <span class="bi bi-shield-lock-fill"></span>
+        <input type="password" formControlName="password" placeholder="Password" maxlength="50" required />
+      </label>
+
+      <label class="field wide-field">
+        <span class="bi bi-check-circle-fill"></span>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm Password"
+          maxlength="50"
+          required
+          (keyup.enter)="onSubmit()"
+        />
+      </label>
+
+      <button type="submit" class="primary-button">Register</button>
+
+      <p class="auth-link">
+        Already have an account?
+        <a routerLink="/">Sign in</a>
+      </p>
+    </form>
+  </section>
+</main>

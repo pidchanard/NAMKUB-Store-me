@@ -1,12 +1,15 @@
 <app-header-user></app-header-user>
-<div class="back">
-  <button type="button" routerLink="/home">Back</button>
+
+<main class="product-page">
+  <div class="product-page-head">
+    <button type="button" routerLink="/home"><i class="bi bi-arrow-left"></i> Back</button>
+    <div>
+      <h2>สินค้าทั้งหมด</h2>
+      <p>เลือกน้ำดื่มที่ต้องการ แล้วเพิ่มลงรถเข็นได้ทันที</p>
+    </div>
   </div>
 
-<h2 class="mt-5" style="padding-left: 15rem;">สินค้าทั้งหมด</h2><hr>
-
-
-
-<app-product-box></app-product-box> 
+  <app-product-box></app-product-box>
+</main>
 
 <app-footer></app-footer>

@@ -1,51 +1,57 @@
 <app-header-user></app-header-user>
-<div class="back">
-    <button type="button" routerLink="/home">Back</button>
+
+<main class="contact-page">
+  <section class="contact-hero">
+    <button type="button" class="back-button" routerLink="/home">
+      <i class="bi bi-arrow-left"></i>
+      Back
+    </button>
+
+    <div>
+      <p class="eyebrow">Contact Namkub</p>
+      <h1>ติดต่อเรา</h1>
+      <p class="subtitle">สอบถามสินค้า การจัดส่ง หรือช่องทางการสั่งซื้อได้ที่นี่</p>
     </div>
-    
-<div class="row">
-    <iframe
+  </section>
+
+  <section class="contact-layout">
+    <div class="map-card">
+      <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d933.4958962069111!2d100.92266199209492!3d13.113654720744448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102b9c536bf4bbd%3A0x389f6bb05ac0734f!2z4LmA4Lii4LmH4LiZ4Liq4Lia4Liy4Lii4LmB4Lih4LiZ4LiK4Lix4LmI4LiZ!5e1!3m2!1sth!2sth!4v1726297421637!5m2!1sth!2sth"
-        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-<div class="section" style="padding-bottom: 50px;">
-</div>
-<div class="container mt-4">
-    <div class="container ml-4">
-        <router-outlet></router-outlet>
-        <div class="col-6">
-            
-            <div class="row ">
-                <div class="col-12" style="font-size: 20px;">
-                    <p><i class="bi bi-geo-alt-fill icon"></i>&nbsp;&nbsp;234 ม.8 ถ. ทุ่งสุขลา ตำบลทุ่งสุขลา อำเภอศรีราชา ชลบุรี 20230</p><br>
-                </div>
-            </div>
-            
-            <div class="row ">
-                <div class="col-9" style="font-size: 20px;">
-                <p><i class="bi bi-telephone-fill icon"></i>&nbsp;&nbsp;090-XXX-XXXX</p><br>
-                </div>
-            </div>
-            
-            <div class="row ">
-                <div class="col-9" style="font-size: 20px;">
-                    <p><i class="bi bi-envelope-open icon"></i>&nbsp;&nbsp;namkub<i class="bi bi-threads"></i>gmail.com</p><br>
-                </div>
-            </div>
-            <h3>Social Media</h3>
-            <div class="row">
-                <div class="col-3"></div>
-                <ul>
-                        <i class="bi bi-facebook icons">&nbsp;namkum</i>
-                        <i class="bi bi-instagram icons">&nbsp;namkubbb</i>
-                        <i class="bi bi-line icons">&nbsp;namkubb</i>
-                        <i class="bi bi-twitter icons">&nbsp;nnamkubb</i>
-                    </ul>
-                <div class="section" style="padding-bottom: 50px;">
-                </div>
-            </div>
-        </div>
+        title="Namkub map"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
-</div>
-    <app-footer></app-footer>
+
+    <div class="contact-card">
+      <div class="contact-item">
+        <span class="contact-icon"><i class="bi bi-geo-alt-fill"></i></span>
+        <p>234 ม.8 ถ. ทุ่งสุขลา ตำบลทุ่งสุขลา อำเภอศรีราชา ชลบุรี 20230</p>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon"><i class="bi bi-telephone-fill"></i></span>
+        <p>090-XXX-XXXX</p>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon"><i class="bi bi-envelope-open"></i></span>
+        <p>namkub&#64;gmail.com</p>
+      </div>
+
+      <div class="social-block">
+        <h2>Social Media</h2>
+        <div class="social-list">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i><span>namkum</span></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i><span>namkubbb</span></a>
+          <a href="#" aria-label="Line"><i class="bi bi-line"></i><span>namkubb</span></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i><span>nnamkubb</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>

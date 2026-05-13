@@ -1,0 +1,10 @@
+{
+  "name": "namkub-store-me",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix FontEnd/NamKUB-Store run start -- --host 127.0.0.1 --port 4200",
+    "build": "npm --prefix FontEnd/NamKUB-Store run build",
+    "build:dev": "npm --prefix FontEnd/NamKUB-Store run build -- --configuration development",
+    "install:frontend": "npm --prefix FontEnd/NamKUB-Store install"
+  }
+}

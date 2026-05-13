@@ -81,10 +81,13 @@ export class UserRegComponent implements OnInit {
   onFileChange(event: Event){
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length){
-
-      this.registerForm.patchValue({
-        picture : input.files[0].name
-      })
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.registerForm.patchValue({
+          picture: String(reader.result)
+        });
+      };
+      reader.readAsDataURL(input.files[0]);
     }
   }
 

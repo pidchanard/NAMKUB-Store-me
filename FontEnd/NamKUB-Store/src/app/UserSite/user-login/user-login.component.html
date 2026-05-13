@@ -1,51 +1,54 @@
+<main class="auth-page">
+  <section class="auth-card">
+    <div class="auth-copy">
+      <p class="eyebrow">Welcome back</p>
+      <h1>Login</h1>
+      <p class="subtitle">เข้าสู่ระบบเพื่อเลือกซื้อน้ำดื่มและดูตะกร้าของคุณ</p>
+    </div>
 
-<div class="form-container">
-    <form (ngSubmit)="onLogin()">
-      <h1 style="text-align: center; font-weight: bold; font-family:Arial, Helvetica, sans-serif;">Login</h1>
-      <div class="input-field">
-        <span class="bi bi-person-fill fs-4">&nbsp;</span>
+    <form class="auth-form" (ngSubmit)="onLogin()">
+      <label class="field" for="username">
+        <span class="bi bi-person-fill"></span>
         <input
           type="text"
           id="username"
           name="username"
-          placeholder="@username"
+          placeholder="Username"
           [(ngModel)]="username"
           maxlength="50"
           required
-          class="box"
         />
-      </div>
-  
-      <div class="input-field">
-        <span class="bi bi-shield-lock-fill fs-4" >&nbsp;</span>
+      </label>
+
+      <label class="field" for="password">
+        <span class="bi bi-shield-lock-fill"></span>
         <input
-           [type]="type"
+          [type]="type"
           id="password"
           name="password"
-          placeholder="@password"
+          placeholder="Password"
           maxlength="50"
           [(ngModel)]="password"
           required
-          class="box"
           (keyup.enter)="onLogin()"
         />
-        <span (click)="hideShowPass()" class=" {{eyeIcon}}"></span>
-      </div> 
-  
-      <div *ngIf="errorMessage" class="error-message">
+        <button class="icon-button" type="button" (click)="hideShowPass()" aria-label="Toggle password">
+          <span [class]="eyeIcon"></span>
+        </button>
+      </label>
+
+      <p *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
-      </div>
-  
-      <button
-        type="submit"
-        class="btn"
-        style="background-color:#6fb9fa;border-radius: 50px; color: #fff;"
-      >
+      </p>
+
+      <button type="submit" class="primary-button">
         Login
       </button>
-      <div class="text-center pt-4 text-muted">Don't have account? <a id="forget" routerLink="/register">sign up</a></div>
-  
 
+      <p class="auth-link">
+        Don't have account?
+        <a routerLink="/register">sign up</a>
+      </p>
     </form>
-  </div>
-  
+  </section>
+</main>

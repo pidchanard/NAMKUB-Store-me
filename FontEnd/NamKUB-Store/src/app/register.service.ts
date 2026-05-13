@@ -2,14 +2,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
+import { NAMKUBAPIService } from './Service/namkub-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  private baseUrl = 'http://localhost:3000/register'; // URL ของ API ที่จะเรียกใช้
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private apiService: NAMKUBAPIService) { }
 
   // ฟังก์ชันสำหรับส่งข้อมูลการลงทะเบียนผู้ใช้
   registerUser(userData: any): Observable<any> {
@@ -17,10 +16,10 @@ export class RegisterService {
       'Content-Type': 'application/json'
     });
 
-    console.log('Sending registration request to:', this.baseUrl);
+    console.log('Sending mock registration request');
     console.log('Request body:', userData);
 
-    return this.http.post(this.baseUrl, userData, { headers }).pipe(
+    return this.apiService.registerUser(userData).pipe(
       tap(response => {
         console.log('Registration response:', response);
       }),

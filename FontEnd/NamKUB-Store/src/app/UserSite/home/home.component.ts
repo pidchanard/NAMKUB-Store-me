@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,38 +9,43 @@ import { Inject, PLATFORM_ID } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  bannerImage: string = 'HomePage.webp'; 
-  private themeCheckInterval: any; 
+  bannerImage: string = 'HomePage.webp';
+  searchText = '';
+  private boundHandleThemeChange: EventListener;
+  private queryParamsSubscription?: Subscription;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      
-      this.themeCheckInterval = setInterval(() => {
-        const storedTheme = localStorage.getItem('theme');
-        this.updateBannerImage(storedTheme === 'dark');
-      }, 500);
+    this.queryParamsSubscription = this.route.queryParamMap.subscribe(params => {
+      this.searchText = params.get('q')?.trim() || '';
+    });
 
-      // ตรวจสอบโหมดที่เก็บไว้ใน localStorage ตอนเริ่มต้น
+    if (isPlatformBrowser(this.platformId)) {
       const storedTheme = localStorage.getItem('theme');
       this.updateBannerImage(storedTheme === 'dark');
+
+      this.boundHandleThemeChange = ((event: Event) => {
+        const themeEvent = event as CustomEvent<{ darkMode: boolean }>;
+        this.updateBannerImage(themeEvent.detail.darkMode);
+      }) as EventListener;
+
+      window.addEventListener('themeChange', this.boundHandleThemeChange);
     }
   }
 
   ngOnDestroy(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      clearInterval(this.themeCheckInterval);
+    this.queryParamsSubscription?.unsubscribe();
+
+    if (isPlatformBrowser(this.platformId) && this.boundHandleThemeChange) {
+      window.removeEventListener('themeChange', this.boundHandleThemeChange);
     }
   }
 
   updateBannerImage(isDarkMode: boolean): void {
-    if (isDarkMode) {
-      this.bannerImage = 'darkWater.avif'; // รูปสำหรับโทนมืด
-      console.log('Dark mode activated. Banner image set to darkWater.avif');
-    } else {
-      this.bannerImage = 'HomePage.webp'; // รูปสำหรับโทนสว่าง
-      console.log('Light mode activated. Banner image set to HomePage.webp');
-    }
+    this.bannerImage = isDarkMode ? 'darkWater.avif' : 'HomePage.webp';
   }
 }

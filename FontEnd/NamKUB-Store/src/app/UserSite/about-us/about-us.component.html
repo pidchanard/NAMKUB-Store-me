@@ -1,127 +1,93 @@
 <app-header-user></app-header-user>
-<div class="back">
-    <button type="button" routerLink="/home">Back</button>
-    </div>
-    
-<div class="container mt-4">
-    <div class="container ml-4">
-        <router-outlet></router-outlet>
-    </div>
-    <h3>เกี่ยวกับเรา</h3>
-    <hr />
-    <h3>ประวัติร้าน</h3>
-    <div class="row">
-        <div class="col-4">
 
-        </div>
-        <div class="col-8">
-            <p>
-                ร้าน "น้ำคับ" ก่อตั้งขึ้นในปี พ.ศ. 256X
-                โดยเกิดจากแรงบันดาลใจของกลุ่มคนรุ่นใหม่ที่เห็นถึงความสำคัญของการบริโภคน้ำที่มีคุณภาพ สะอาด และคุ้มค่า
-                ด้วยความตั้งใจที่จะทำให้การดื่มน้ำเป็นเรื่องง่ายสำหรับทุกคน ร้าน "น้ำคับ"
-                ได้เริ่มต้นขึ้นจากการจำหน่ายน้ำดื่มบรรจุขวดและแพ็คในราคาที่เข้าถึงได้
-                และเน้นการส่งถึงที่อย่างรวดเร็วเพื่อความสะดวกของลูกค้า
-            </p>
-            <p>
-                ชื่อ "น้ำคับ" สะท้อนถึงความใกล้ชิดและความใส่ใจในบริการของเรา ด้วยการนำเสนอสินค้าที่ได้มาตรฐานในทุกขวด
-                รวมถึงการบริการที่เป็นมิตรและพร้อมรับฟังความต้องการของลูกค้าเสมอ
-            </p>
-        </div>
+<main class="about-page">
+  <section class="about-hero">
+    <button type="button" class="back-button" routerLink="/home">
+      <i class="bi bi-arrow-left"></i>
+      Back
+    </button>
+
+    <div>
+      <p class="eyebrow">About Namkub</p>
+      <h1>เกี่ยวกับเรา</h1>
+      <p>ร้านน้ำดื่มที่อยากให้การสั่งซื้อเป็นเรื่องง่าย สดชื่น และไว้ใจได้</p>
     </div>
-    <h3>พนักงานของเรา</h3>
-    <div class="row">
-        <div class="col-4">
-        </div>
-        <div class="col-8">
-            <div class="row">
-                <div class="col-3" style="padding-bottom: 50px;">
-                    <div class="card">
-                        <div class="text-center">
-                            <div class="section" style="padding-bottom:41px;"></div>
-                            <img src="/ตายคางาน.jpg" class="rounded" style="width: 150px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title h5">
-                                ...
-                            </div>
-                            <p class="card-text">นายนันทนาธร ซื่อตรง</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="text-center">
-                            <div class="section" style="padding-bottom: 46px;"></div>
-                            <img src="เบื่องาน.png" class="rounded" style="width: 150px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title h5">
-                                ...
-                            </div>
-                            <p class="card-text">นส.พิชญ์นาฏ เหมือนสนธิ์</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="text-center">
-                            <div class="section" style="padding-bottom: 44px;"></div>
-                            <img src="/คีย์แคป.jpg" class="rounded" style="width: 150px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title h5">
-                                ...
-                            </div>
-                            <p class="card-text">นายพงศกร ทองกอบสม</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="text-center">
-                            <div class="section" style="padding-bottom: 45px;"></div>
-                            <img src="/แมวกาแฟ.jpg" class="rounded" style="width: 150px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title h5">
-                                ...
-                            </div>
-                            <p class="card-text">นายณัฐพงศ์ ธัญญอนันต์ผล</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="text-center">
-                            <div class="section" style="padding-bottom: 20px;"></div>
-                            <img src="/แมวกล่อง.jpg" class="rounded" style="width: 150px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title h5">
-                                ...
-                            </div>
-                            <p class="card-text">นายวรินทร นิธิอุดมโชค</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="text-center">
-                            <div class="section" style="padding-bottom: 20px;"></div>
-                            <img src="/แมวแบกเตียง.jpg" class="rounded" style="width: 150px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title h5">
-                                ...
-                            </div>
-                            <p class="card-text">นายพีรทัต พ่วงนิล</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </section>
+
+  <section class="story-card">
+    <div class="story-label">
+      <span>Our Story</span>
+      <h2>ประวัติร้าน</h2>
     </div>
-    <div class="section" style="padding-bottom: 50px;">
+
+    <div class="story-content">
+      <p>
+        ร้าน "น้ำคับ" ก่อตั้งขึ้นจากแรงบันดาลใจของกลุ่มคนรุ่นใหม่ที่เห็นถึงความสำคัญของการบริโภคน้ำที่มีคุณภาพ
+        สะอาด และคุ้มค่า พร้อมเน้นการส่งถึงที่อย่างรวดเร็วเพื่อความสะดวกของลูกค้า
+      </p>
+      <p>
+        ชื่อ "น้ำคับ" สะท้อนถึงความใกล้ชิด ความเป็นกันเอง และความใส่ใจในบริการของเรา
+        โดยเราคัดสรรสินค้าที่ได้มาตรฐานในทุกขวด พร้อมรับฟังความต้องการของลูกค้าเสมอ
+      </p>
     </div>
-</div>
-    <app-footer></app-footer>
+  </section>
+
+  <section class="team-section">
+    <div class="section-heading">
+      <p class="eyebrow">Our Team</p>
+      <h2>พนักงานของเรา</h2>
+    </div>
+
+    <div class="team-grid">
+      <article class="team-card">
+        <img src="/ตายคางาน.jpg" alt="นันทนาธร">
+        <div>
+          <span>...</span>
+          <p>นายนันทนาธร ซื่อตรง</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="/เบื่องาน.png" alt="พิชญ์นาฏ">
+        <div>
+          <span>...</span>
+          <p>นส.พิชญ์นาฏ เหมือนสนธิ์</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="/คีย์แคป.jpg" alt="พงศกร">
+        <div>
+          <span>...</span>
+          <p>นายพงศกร ทองกอบสม</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="/แมวกาแฟ.jpg" alt="ณัฐพงศ์">
+        <div>
+          <span>...</span>
+          <p>นายณัฐพงศ์ ธัญญอนันต์ผล</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="/แมวกล่อง.jpg" alt="วรินทร">
+        <div>
+          <span>...</span>
+          <p>นายวรินทร นิธิอุดมโชค</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="/แมวแบกเตียง.jpg" alt="พีรทัต">
+        <div>
+          <span>...</span>
+          <p>นายพีรทัต พ่วงนิล</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>

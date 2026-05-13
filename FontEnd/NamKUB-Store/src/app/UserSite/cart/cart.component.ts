@@ -4,6 +4,7 @@ import * as bootstrap from 'bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../auth.service';
 import Swal from 'sweetalert2';
+import { NAMKUBAPIService } from '../../Service/namkub-api.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -17,7 +18,7 @@ export class CartComponent {
   userAddress: string = '';
   isAddressModalOpen: boolean = false;
 
-  constructor(private http: HttpClient, private cartService: CartServiceService, private authService: AuthService) { }
+  constructor(private http: HttpClient, private cartService: CartServiceService, private authService: AuthService, private apiService: NAMKUBAPIService) { }
 
   ngOnInit() {
     this.username = this.authService.getUsername();
@@ -86,7 +87,7 @@ export class CartComponent {
       }))
     };
     console.log('Order Data:', orderData);
-    this.http.post('http://localhost:3000/order', orderData)
+    this.apiService.addOrder(orderData)
       .subscribe({
         next: (response) => {
           console.log('order placed successfully', response);

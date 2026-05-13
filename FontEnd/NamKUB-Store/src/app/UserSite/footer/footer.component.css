@@ -1,11 +1,37 @@
 .footer {
-    
+    width: 100%;
     background-size: cover;
-    margin-top:100px;
-    padding: 30px;
+    margin-top: 0;
+    padding: 20px 32px 24px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    border-top: 1px solid rgba(255, 255, 255, 0.32);
+    box-shadow: 0 -12px 32px rgba(37, 90, 170, 0.08);
 }
+
+.footer h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: var(--font-cute);
+    font-weight: 700;
+    color: #102033;
+}
+
+.footer ul {
+    margin: 0;
+    padding-left: 0;
+}
+
 .footer li{
     list-style-type: none;
+    line-height: 1.55;
+}
+
+.footer .row {
+    width: min(1160px, 100%);
+    margin: 0 auto;
+    align-items: flex-start;
+    row-gap: 18px;
 }
 .footer .row .col-3 .content ul li:hover{
     color: #fff;
@@ -13,5 +39,37 @@
 .footer a{
     text-decoration: none;
    color: black;
+}
+
+:host-context(body.dark-mode) .footer {
+    color: rgba(255, 255, 255, 0.92);
+    border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+:host-context(body.dark-mode) .footer h4,
+:host-context(body.dark-mode) .footer li,
+:host-context(body.dark-mode) .footer a,
+:host-context(body.dark-mode) .footer i {
+    color: rgba(255, 255, 255, 0.94);
+}
+
+:host-context(body.dark-mode) .footer h4 {
+    color: #ffffff;
+}
+
+:host-context(body.dark-mode) .footer a:hover,
+:host-context(body.dark-mode) .footer li:hover {
+    color: #b8e7ff;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 22px 20px;
+    }
+
+    .footer .row > [class*="col-"] {
+        width: 50%;
+        margin-bottom: 8px;
+    }
 }
 

@@ -26,7 +26,9 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     // Use the same bound function reference to remove the event listener
-    window.removeEventListener('themeChange', this.boundHandleThemeChange as EventListener);
+    if (isPlatformBrowser(this.platformId) && this.boundHandleThemeChange) {
+      window.removeEventListener('themeChange', this.boundHandleThemeChange as EventListener);
+    }
   }
 
   handleThemeChange(event: CustomEvent) {

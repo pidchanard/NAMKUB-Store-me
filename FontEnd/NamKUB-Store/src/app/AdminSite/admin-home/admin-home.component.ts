@@ -29,7 +29,9 @@ export class AdminHomeComponent implements OnInit {
   toggleSidebar(): void {
     this.isOpen = !this.isOpen;
     console.log('Sidebar isOpen:', this.isOpen); // ดูว่าค่าถูกเปลี่ยนจริงหรือไม่
-    localStorage.setItem('sidebarOpen', this.isOpen.toString());
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('sidebarOpen', this.isOpen.toString());
+    }
   }
   toggleDarkMode(): void {
     this.isDarkMode = !this.isDarkMode;

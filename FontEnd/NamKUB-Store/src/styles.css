@@ -1,6 +1,7 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '@angular/material/prebuilt-themes/azure-blue.css';
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Mali:wght@400;500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Rubik+Bubbles&family=Sixtyfour+Convergence&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Sixtyfour+Convergence&display=swap');
 
@@ -12,10 +13,22 @@
     font-variation-settings: "wdth" 100;
   }
 
-html, body { height: 100%;margin-bottom: 200px; }
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
 body { 
-  font-family: "Noto Sans Thai", sans-serif; 
-  margin-bottom: 200px;
+  font-family: var(--font-body); 
+  overflow-x: hidden;
+}
+
+app-root,
+.app-content {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
 }
 
 *{
@@ -26,6 +39,8 @@ body {
 }
 
 :root{
+  --font-body: "Mali", "Anuphan", "Noto Sans Thai", sans-serif;
+  --font-cute: "Mali", "Anuphan", "Noto Sans Thai", sans-serif;
   --body-color:#E4E9F7;
   --sidebar-color:#fff;
   --primary-color:#695CFE;
@@ -321,5 +336,27 @@ body {
   color: #fff;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { min-height: 100%; }
+body { margin: 0; font-family: var(--font-body); }
+
+body *:not(.bi):not([class^="bi-"]):not([class*=" bi-"]) {
+  font-family: var(--font-body) !important;
+}
+
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+  font-family: "bootstrap-icons" !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-nav .nav-link,
+button,
+.btn {
+  font-family: var(--font-cute) !important;
+}

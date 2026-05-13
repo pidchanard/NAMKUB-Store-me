@@ -19,6 +19,7 @@ export class EditProfileComponent {
   user = new BehaviorSubject<Users[]>([]);
   editprofileform:FormGroup;
   username: string | null = null;
+  profilePreview: string = 'anya.jpg';
 
   constructor( private apiservice: NAMKUBAPIService,
                 private http : HttpClient,
@@ -39,14 +40,23 @@ export class EditProfileComponent {
 ngOnInit(): void {
   // ตรวจสอบว่ากำลังทำงานในเบราว์เซอร์
   if (isPlatformBrowser(this.platformId)) {
-    this.username = this.authService.getUsername();
-    
+    const currentUser = this.authService.getCurrentUser();
+    this.username = currentUser?.username || this.authService.getUsername();
+    this.profilePreview = currentUser?.picture || this.authService.getPicture() || 'anya.jpg';
+    this.editprofileform.patchValue({
+      firstname: currentUser?.firstname || '',
+      lastname: currentUser?.lastname || '',
+      phone: currentUser?.phone || '',
+      username: this.username,
+      email: currentUser?.email || '',
+      picture: this.profilePreview
+    });
 
   }
 }
 
 onSubmit(){
-  if(this.editprofileform.value){
+  if(this.editprofileform.valid){
     const formData = {
       firstname:this.editprofileform.value.firstname,
       lastname:this.editprofileform.value.lastname,
@@ -56,10 +66,19 @@ onSubmit(){
       picture: this.editprofileform.value.picture
       
     };
-    this.http.put('http://localhost:3000/users', formData).subscribe({
+    this.apiservice.updateUser(formData).subscribe({
     next:(response)=> {
       console.log('Profile saved successfully!',response);
-      this.saveProfile();
+      this.authService.setProfileData(formData);
+      Swal.fire({
+        title: 'Saved!',
+        text: 'Profile saved in this browser.',
+        icon: 'success',
+        timer: 900,
+        showConfirmButton: false
+      }).then(() => {
+        this.router.navigate(['/home']);
+      });
      
     },
     error:(error) =>{
@@ -72,6 +91,7 @@ onSubmit(){
     console.log('Form is not valid');
     console.log(this.editprofileform.errors);
     console.log(this.editprofileform.value);
+    this.editprofileform.markAllAsTouched();
   }
 }
   @Input() users: { firstname?: string; lastname?: string; phone?: string; username?: string; email?: string } = {}; 
@@ -83,7 +103,16 @@ onSubmit(){
   }
   }
   resetForm(){
-    this.editprofileform.reset;
+    const currentUser = this.authService.getCurrentUser();
+    this.profilePreview = currentUser?.picture || 'anya.jpg';
+    this.editprofileform.reset({
+      firstname: currentUser?.firstname || '',
+      lastname: currentUser?.lastname || '',
+      phone: currentUser?.phone || '',
+      username: currentUser?.username || this.username,
+      email: currentUser?.email || '',
+      picture: this.profilePreview
+    });
   }
 
   editprofile(){
@@ -101,9 +130,17 @@ onSubmit(){
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length) {
-      this.editprofileform.patchValue({
-        picture: input.files[0].name
-      });
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.profilePreview = String(reader.result);
+        this.editprofileform.patchValue({
+          picture: reader.result
+        });
+      };
+
+      reader.readAsDataURL(file);
     }
   }
 

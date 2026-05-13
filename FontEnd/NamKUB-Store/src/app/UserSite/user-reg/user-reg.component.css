@@ -1,97 +1,161 @@
-/* 
-
-.form-container {
-    background-color: rgb(36, 71, 145);
-    background-size: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 4% 0;
-    position: relative;
-    background-size: cover;
-  }
-  .form-container form {
-      background-color: rgba(167, 173, 174, 0.911);
-      border: 2px solid gray;
-      backdrop-filter: black;
-      box-shadow: gray ;
-      border-radius: 20px;
-      padding: 2rem;
-      
-  }
-  .form-container form .box{
-    background-color: D9D9D9;
-    border-radius: 5px;
-    border-color: rgba(255, 255, 255, 0.185);
-    width: 250px;
-    height: 40px;
-    margin-top: 25px;
-  }
-  .form-container .login-register{
-    text-align: center;
-  }
-  .form-container form .btn{
-    width: 100%;
-    font-size: 1.3rem ;
-    text-align: center;
-}
-.form-container button{
-    margin-top: 20px;
-    width: 250px;
-    height: 40px;
-    border: 0cap;
-    
-}
-.form-container button:hover{
-    background-color: rgb(111, 185, 250);
-} */
-
-.form-container {
-  /* background-color: rgb(36, 60, 145); */
-  background-image:url(../../../../public/login.png);
-  background-size: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.auth-page {
   min-height: 100vh;
-  padding: 4% 0;
-  position: relative;
-  background-size: cover;
+  display: grid;
+  place-items: center;
+  padding: 16px 18px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.78), transparent 30%),
+    linear-gradient(135deg, rgba(230, 248, 255, 0.9), rgba(78, 147, 242, 0.4)),
+    url(../../../../public/login.png) center / cover;
 }
-.form-container form {
-  background-color: rgba(167, 173, 174, 0.911);
-  border: 2px solid gray;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  padding: 2rem;
+
+.auth-card {
+  width: min(720px, 100%);
+  padding: 24px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 24px 70px rgba(28, 105, 181, 0.22);
+  backdrop-filter: blur(18px);
 }
-.form-container form .box {
-  background-color: #D9D9D9;
-  border-radius: 5px;
-  border-color: rgba(255, 255, 255, 0.185);
-  width: 250px;
-  height: 30px;
+
+.auth-copy {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #1671d6;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  color: #162231;
+  font-size: clamp(2.3rem, 5.6vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 8px auto 0;
+  color: #637083;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.auth-form {
+  display: grid;
+  gap: 10px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.field,
+.file-field {
+  display: grid;
+  grid-template-columns: 22px 1fr;
   align-items: center;
-  margin-top: 25px;
+  gap: 12px;
+  min-height: 46px;
+  padding: 0 16px;
+  border: 1px solid rgba(42, 127, 223, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 28px rgba(44, 112, 190, 0.1);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
-.form-container .login-register {
-  text-align: center;
+
+.field:focus-within,
+.file-field:focus-within {
+  border-color: rgba(24, 116, 235, 0.52);
+  box-shadow: 0 14px 32px rgba(25, 110, 220, 0.18);
+  transform: translateY(-1px);
 }
-.form-container form .btn {
+
+.field > .bi,
+.file-field > .bi {
+  color: #1671d6;
+  font-size: 1.15rem;
+}
+
+.field input,
+.file-field input {
   width: 100%;
-  font-size: 1.3rem;
-  text-align: center;
-}
-.form-container button {
-  margin-top: 20px;
-  width: 250px;
-  height: 40px;
+  min-width: 0;
   border: 0;
+  outline: 0;
+  background: transparent;
+  color: #17212f;
+  font-size: 1rem;
+  font-weight: 600;
 }
-.form-container button:hover {
-  background-color: rgb(111, 185, 250);
-  
+
+.field input::placeholder {
+  color: #8a96a8;
+  font-weight: 500;
+}
+
+.file-field input::file-selector-button {
+  margin-right: 12px;
+  border: 0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: #176fdc;
+  background: rgba(22, 113, 214, 0.1);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  height: 50px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 18px;
+  color: #fff;
+  background: linear-gradient(135deg, #23a6f0, #335dff);
+  box-shadow: 0 18px 36px rgba(25, 111, 235, 0.28);
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 42px rgba(25, 111, 235, 0.34);
+}
+
+.auth-link {
+  margin: 0;
+  color: #637083;
+  text-align: center;
+  font-size: 0.98rem;
+}
+
+.auth-link a {
+  color: #166fea;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 680px) {
+  .auth-card {
+    padding: 22px 18px;
+    border-radius: 24px;
+  }
+
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
 }
