@@ -3,6 +3,7 @@ import { NAMKUBAPIService } from '../../Service/namkub-api.service';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Orders } from '../../model/products';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -14,11 +15,15 @@ export class OrderComponent {
   searchQuery1: any;
 
   constructor( private apiservice: NAMKUBAPIService,
-    private http : HttpClient
+    private http : HttpClient,
+    private route: ActivatedRoute
 ){}
 
   ngOnInit(): void{
-  this.reloadUsers();
+    this.route.queryParamMap.subscribe(params => {
+      this.searchQuery1 = params.get('q') || '';
+      this.searchQuery1 ? this.searchOrder() : this.reloadUsers();
+    });
   }
 
   reloadUsers(){

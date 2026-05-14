@@ -1,0 +1,74 @@
+<app-header-user></app-header-user>
+
+<main class="detail-page" *ngIf="product; else notFound">
+  <section class="detail-card">
+    <button type="button" class="back-button" routerLink="/products">
+      <i class="bi bi-arrow-left"></i>
+      Back
+    </button>
+
+    <div class="product-visual">
+      <img [src]="product.Product_Picture" [alt]="product.Product_Name">
+    </div>
+
+    <div class="product-info">
+      <p class="eyebrow">Product Detail</p>
+      <h1>{{ product.Product_Name }}</h1>
+      <p class="description">
+        {{ product.Product_Description || 'น้ำดื่มคุณภาพดีจาก Namkub พร้อมจัดส่งถึงคุณ' }}
+      </p>
+
+      <div class="detail-meta">
+        <div>
+          <span>ขนาด</span>
+          <strong>{{ product.Product_Size }} ml</strong>
+        </div>
+        <div *ngIf="product.Product_Pack">
+          <span>จำนวน</span>
+          <strong>{{ product.Product_Pack }} ขวด/แพ็ค</strong>
+        </div>
+        <div>
+          <span>คงเหลือ</span>
+          <strong>{{ product.Stock_Quantity }} ชิ้น</strong>
+        </div>
+      </div>
+
+      <div class="price-row">
+        <span>ราคา</span>
+        <strong>{{ product.Product_Price }} บาท</strong>
+      </div>
+
+      <button type="button" class="add-cart-btn" (click)="addToCart(product)">
+        <i class="bi bi-cart-plus"></i>
+        ใส่รถเข็น
+      </button>
+    </div>
+  </section>
+
+  <section class="related-section" *ngIf="relatedProducts.length">
+    <h2>สินค้าใกล้เคียง</h2>
+    <div class="related-grid">
+      <article class="related-card" *ngFor="let item of relatedProducts" (click)="goToDetail(item)">
+        <img [src]="item.Product_Picture" [alt]="item.Product_Name">
+        <div>
+          <h3>{{ item.Product_Name }}</h3>
+          <p>{{ item.Product_Pack ? item.Product_Pack + ' ขวด/แพ็ค' : item.Product_Size + ' ml' }}</p>
+          <strong>{{ item.Product_Price }} บาท</strong>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<ng-template #notFound>
+  <app-header-user></app-header-user>
+  <main class="detail-page">
+    <div class="not-found">
+      <i class="bi bi-box-seam"></i>
+      <h1>ไม่พบสินค้า</h1>
+      <button type="button" routerLink="/products">กลับไปหน้าสินค้า</button>
+    </div>
+  </main>
+</ng-template>
+
+<app-footer></app-footer>

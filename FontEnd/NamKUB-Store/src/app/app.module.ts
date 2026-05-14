@@ -36,6 +36,7 @@ import { Nestle3Component } from './UserSite/Product-details/nestle3/nestle3.com
 import { Minere1Component } from './UserSite/Product-details/minere1/minere1.component';
 import { Minere2Component } from './UserSite/Product-details/minere2/minere2.component';
 import { ProductBoxComponent } from './UserSite/product/product-box/product-box.component';
+import { ProductDetailComponent } from './UserSite/product/product-detail/product-detail.component';
 import { AdminRegComponent } from './AdminSite/admin-reg/admin-reg.component';
 import { AuthService } from './auth.service';
 import { NAMKUBAPIService } from './Service/namkub-api.service';
@@ -75,6 +76,7 @@ import { EditProfileComponent } from './UserSite/edit-profile/edit-profile.compo
     Minere1Component,
     Minere2Component,
     ProductBoxComponent,
+    ProductDetailComponent,
     AdminRegComponent,
     NoAccessComponent,
     DashboardComponent,

@@ -1,228 +1,233 @@
-.container{
-    margin-top: 5rem;
-    margin-left: 300px;
-    width: auto;
+.container {
+  padding-left: 200px;
+  background: none;
+  font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+  padding-bottom: 60px;
+  margin-top: 5rem;
 }
 
-  
-  .dropdown-container {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 10px; 
-  }
-  
-  .dropdown {
-    border: none; 
-    outline: none;
-    background: none;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  .dropdown option{
-  color:#000;
- }
-
-  
-  .modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    
-  }
-  
-  .modal-content {
-    background-color: rgb(10, 24, 51);
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    width: 50%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .modal-header {
-    display: flex;
-    justify-content: space-between; /* จัดตำแหน่งให้ปุ่มไปอยู่ที่ปลายขวา */
-    padding: 1rem;
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  .modal-body {
-    display: flex;
-    margin-top: 20px;
-    
-  }
-
-  .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-
-  .close-btn {
-    margin-left: auto;
-    font-size: 30px;
-    cursor: pointer;
-    margin-top: -1rem;
-    
-  }
-.form-group label {
-    flex: 1;
-    text-align: right;
-    margin-right: 10px;
-  }
-
-  .form-section {
-    flex: auto;
-    
-    
-  }
-  
-  .form-group {
-    margin-bottom: 10px;
-    display: flex;
-    width: 100%;
-    
-  }
-  .form-group input, 
-  .form-group select {
-    flex: 2;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-  }
-  .confirm-btn{
-    background-color: limegreen;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .form-control {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%; /* ให้ input ยืดขนาดเต็มที่ */
-  }
-
-  .search-container {
-    display: flex;              
-    align-items: center;        
-    gap: 10px;              
-
-  }
-  .search-input {
-    padding: 5px 10px;
-    font-size: 16px;
-    width: 100%;                  
-    border-radius: 5px;           
-    border: 1px solid #ccc;  
-    z-index: 50;     
-    
-  }
-  
-  input[type="date"] {
-    width: 150px; 
-    height: 2.8rem;
-    padding: 5px 10px;
-    font-size: 16px;
-    border-radius: 5px;           
-    border: 1px solid #ccc; 
-    z-index: 100;
-  }
-  
-  .search-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3b3f60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .search-btn:hover {
-    background-color: #36304e;
-    color: #fff
-  }
-  button{
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3b3f60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover{
-     background-color: #36304e;
-    color: #fff
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    padding-bottom: 40px;
-    box-shadow: 5px 5px 10px #5918ae4d;
+h2 {
+  font-weight: 700;
+  font-size: 28px;
+  color: #172033;
+  margin-bottom: 24px;
 }
 
-table, th, td {
-    border: none;
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: 1px solid #e8edf5;
+  box-shadow: 0 12px 24px rgba(34, 64, 118, 0.05);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
-tr {
-    position: relative; 
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #5f6b7a;
 }
 
-tr::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 25px; 
-    right: 25px; 
-    height: 1px; 
-    background-color: #a3a3a3; 
+.dropdown {
+  border: 1px solid #d1d9e6;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  background: #ffffff;
+  transition: border-color 0.2s;
+}
+
+.dropdown:focus {
+  border-color: #1576f8;
+}
+
+.dropdown option {
+  color: #172033;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #d1d9e6;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  border-color: #1576f8;
+  box-shadow: 0 0 0 4px rgba(21, 118, 248, 0.1);
+}
+
+.search-btn, button {
+  background: linear-gradient(135deg, #1576f8, #0f63df);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-btn:hover, button:hover {
+  background: linear-gradient(135deg, #0d67e0, #0b55bf);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(21, 118, 248, 0.2);
+}
+
+/* Modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(14, 7, 39, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 32px;
+  border: 1px solid #e8edf5;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 24px 48px rgba(34, 64, 118, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e8edf5;
+  padding-bottom: 16px;
+}
+
+.close-btn {
+  font-size: 28px;
+  cursor: pointer;
+  color: #5f6b7a;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #172033;
+}
+
+/* Table Design */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(34, 64, 118, 0.05);
+  border: 1px solid #e8edf5;
 }
 
 th, td {
-    padding: 12px;
-    text-align: center;
-    border: none;
+  padding: 16px 24px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #e8edf5;
 }
 
 th {
-    background-color: #36304e;
-    color: #a3a3a3;;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 30px;
+  background-color: #f8fbff;
+  color: #5f6b7a;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 td {
-    background-color: #282a3f;
-    color: #a3a3a3;
+  color: #172033;
+  font-size: 15px;
 }
 
-table tr:nth-child(even) {
-    background: none;
-    color: #a3a3a3;
-}
-h2{
-  font-family: "Rubik Bubbles", system-ui;
+table tr:last-child td {
+  border-bottom: none;
 }
 
-.bg{
-  font-family:"Rajdhani", sans-serif; 
+table tr:hover td {
+  background-color: #fdfdfd;
+}
+
+/* -----------------------------
+   Dark Mode Overrides
+------------------------------*/
+:host-context(body.dark-mode) h2,
+:host-context(body.dark-mode) p {
+  color: #ffffff;
+}
+
+:host-context(body.dark-mode) .search-container,
+:host-context(body.dark-mode) table,
+:host-context(body.dark-mode) .modal-content {
+  background: #1e1e2d;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+}
+
+:host-context(body.dark-mode) .dropdown,
+:host-context(body.dark-mode) .search-input {
+  background: #2a2a3b;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+:host-context(body.dark-mode) .dropdown option {
+  color: #ffffff;
+  background: #2a2a3b;
+}
+
+:host-context(body.dark-mode) .dropdown:focus,
+:host-context(body.dark-mode) .search-input:focus {
+  border-color: #1576f8;
+}
+
+:host-context(body.dark-mode) th {
+  background-color: #2a2a3b;
+  color: #a0aab8;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:host-context(body.dark-mode) td {
+  background-color: #1e1e2d;
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+:host-context(body.dark-mode) table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+:host-context(body.dark-mode) .modal-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:host-context(body.dark-mode) .close-btn {
+  color: #a0aab8;
+}
+
+:host-context(body.dark-mode) .close-btn:hover {
+  color: #ffffff;
 }

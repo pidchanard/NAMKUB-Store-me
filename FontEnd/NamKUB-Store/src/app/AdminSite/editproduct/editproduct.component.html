@@ -244,18 +244,22 @@
   </div>
   
   <div *ngIf="products$ | async as products">
-    <div *ngIf="products.length > 0; else noData">
+    <div class="product-admin-grid" *ngIf="products.length > 0; else noData">
       <div class="product-card" *ngFor="let product of products">
         <div class="photo">
-          <img [src]="product.Product_Picture" alt="Photo" style="width: 180px; height: 180px;">
+          <img [src]="product.Product_Picture" [alt]="product.Product_Name">
         </div>
         <div class="details">
-          <p><strong>ID</strong>: {{ product.Product_ID }}</p>
-          <p><strong>Title</strong>: {{ product.Product_Name }}</p>
-          <p><strong>Size</strong>: {{ product.Product_Size }}</p>
-          <p><strong>Price</strong>: {{ product.Product_Price }}</p>
-          <p><strong>Stock</strong>: {{ product.Stock_Quantity }}</p>
-          <p><strong>Status</strong>: {{ product.Product_status}}</p>
+          <span class="product-id">ID {{ product.Product_ID }}</span>
+          <h3 [title]="product.Product_Name">{{ product.Product_Name }}</h3>
+          <div class="product-stats">
+            <span><b>Size</b>{{ product.Product_Size }} ml</span>
+            <span><b>Price</b>{{ product.Product_Price }} บาท</span>
+            <span><b>Stock</b>{{ product.Stock_Quantity }}</span>
+          </div>
+          <span class="status-pill" [class.inactive]="product.Product_status?.toLowerCase() !== 'active'">
+            {{ product.Product_status }}
+          </span>
         </div>
         <div class="edit-btn">
           <button class="btn btn-primary" (click)="editProduct(product)">Edit</button>
@@ -270,5 +274,5 @@
 </div>
 
 <ng-template #noData>
-  <p>No products available.</p>
+  <p class="empty-state">No products available.</p>
 </ng-template>

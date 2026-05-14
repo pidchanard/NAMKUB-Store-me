@@ -3,66 +3,75 @@
     <header>
       <div class="image-text">
         <span class="image">
-          <img src="namkubB.png" alt="logo" style="width:100px;">
+          <img class="admin-logo" src="namkubB.png" alt="logo">
         </span>
         <div class="text header-text">
-            <span class="name">Namkub</span>
-            <span class="profession">Management</span>
+          <span class="name">Namkub</span>
+          <span class="profession">Management</span>
         </div>
       </div>
-      
     </header>
+
     <div class="menu-bar">
       <div class="menu">
-          <li class="search-box">
-            <i class="bi bi-search icon" style="margin-left: 70px;" ></i>
-              <input type="search" placeholder="Search...">
-          </li>
-          <div class="menu-links">
+        <li class="search-box">
+          <i class="bi bi-search icon"></i>
+          <input
+            type="search"
+            placeholder="Search..."
+            [(ngModel)]="searchTerm"
+            (keyup.enter)="searchAdmin()"
+            (input)="searchAdmin()"
+          >
+          <button *ngIf="searchTerm" class="clear-search" type="button" (click)="clearSearch()" aria-label="Clear search">×</button>
+        </li>
+
+        <div class="menu-links">
           <li class="nav-link">
             <a routerLink="/dashboard">
               <i class="bi bi-house icon"></i>
               <span class="text nav-text">Dashboard</span>
             </a>
           </li>
-           
+
           <li class="nav-link">
             <a routerLink="/order">
               <i class="bi bi-journal-check icon"></i>
               <span class="text nav-text">Order</span>
             </a>
           </li>
+
           <li class="nav-link">
             <a routerLink="/editproduct">
               <i class="bi bi-pen icon"></i>
               <span class="text nav-text">Edit Product</span>
             </a>
           </li>
+
           <li class="nav-link">
             <a routerLink="/stockmanage">
               <i class="bi bi-box2 icon"></i>
               <span class="text nav-text">Product Stock</span>
             </a>
           </li>
+
           <li class="nav-link">
             <a routerLink="/memberlist">
               <i class="bi bi-people icon"></i>
-              <span class="text nav-text">member list</span>
+              <span class="text nav-text">Member List</span>
             </a>
           </li>
-          
-        
-          
         </div>
       </div>
+
       <div class="bottom-content">
-        <li class="">
-          <a href="#">
-            <i class="bi bi-box-arrow-left icon" style="margin-left: 30px;"></i>
+        <li>
+          <a href="#" (click)="onLogout(); $event.preventDefault()">
+            <i class="bi bi-box-arrow-left icon"></i>
             <span class="text nav-text">Logout</span>
           </a>
         </li>
-  
+
         <div class="toggle-container">
           <div class="moon-sun">
             <i class="bi" [ngClass]="isDarkMode ? 'bi bi-sun' : 'bi bi-moon'"></i>
@@ -72,14 +81,12 @@
             <input type="checkbox" (click)="toggleDarkMode()" [checked]="isDarkMode">
             <span class="slider round"></span>
           </label>
-         
         </div>
-  
       </div>
     </div>
-  
   </nav>
-  </div>
-  <div class="main-content" [ngClass]="{'slide': isOpen}">
-    <button class="main-content" (click)="toggleSidebar()">{{ isOpen ? '× ' : '☰ ' }}</button>
+</div>
+
+<div class="admin-toggle-wrap" [ngClass]="{'slide': isOpen}">
+  <button class="sidebar-toggle" type="button" (click)="toggleSidebar()">{{ isOpen ? '×' : '☰' }}</button>
 </div>

@@ -4,6 +4,8 @@ export interface Products {
     Product_Name: string
     Product_Picture: string
     Product_Size: number
+    Product_Pack?: number
+    Product_Description?: string
     Product_Price: number
     Sup_ID: string
     Stock_Quantity: number

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Alltime, BestSale, Summary } from '../../model/products';
 import { NAMKUBAPIService } from '../../Service/namkub-api.service';
 import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
+  standalone: false,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -13,13 +13,12 @@ export class DashboardComponent implements OnInit {
 
   public AlltimeSum: Alltime[] = []; 
   public bestsale: BestSale[] = [];  
-  selectedMonth: number;
+  selectedMonth = 1;
 
   // BehaviorSubject เพื่อใช้สำหรับเก็บและแชร์ข้อมูล Summary
   public summaries = new BehaviorSubject<Summary[]>([]);
 
-  constructor(private apiService: NAMKUBAPIService,
-              private http: HttpClient) {}
+  constructor(private apiService: NAMKUBAPIService) {}
 
   ngOnInit() {
     this.loadSummaries();

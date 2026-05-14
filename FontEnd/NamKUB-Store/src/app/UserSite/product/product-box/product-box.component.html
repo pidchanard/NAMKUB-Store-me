@@ -1,18 +1,28 @@
-<ng-container *ngIf="products | async as productList">
-  <div class="product-grid" *ngIf="productList.length; else noProducts">
-    <div class="product-card" *ngFor="let product of productList">
-      <div class="product-image">
-        <img [src]="product.Product_Picture" alt="">
-      </div>
-      <div class="product-content">
-        <h5>{{ product.Product_Name }}</h5>
-        <div class="product-meta">
-          <span>{{ product.Product_Size }} ml</span>
-          <strong>{{ product.Product_Price }} บาท</strong>
+<ng-container>
+  <div class="product-grid" *ngIf="products.length; else noProducts">
+    <div class="product-card" *ngFor="let product of products">
+      <button class="product-detail-link" type="button" (click)="goToDetail(product)">
+        <div class="product-image">
+          <img [src]="product.Product_Picture" [alt]="product.Product_Name">
         </div>
-        <button class="add-cart-btn" type="button" (click)="addToCart(product)">
-          <i class="bi bi-cart-plus"></i>
-          ใส่รถเข็น {{ product.Product_Price }}.-
+        <div class="product-content">
+          <h5 [title]="product.Product_Name">{{ product.Product_Name }}</h5>
+          <div class="product-meta">
+            <span>{{ product.Product_Size }} ml</span>
+            <span *ngIf="product.Product_Pack">{{ product.Product_Pack }} ขวด/แพ็ค</span>
+            <strong>{{ product.Product_Price }} บาท</strong>
+          </div>
+        </div>
+      </button>
+
+      <div class="product-actions">
+        <button class="detail-btn" type="button" (click)="goToDetail(product)" title="รายละเอียด">
+          ดูรายละเอียด
+        </button>
+        <button class="add-cart-btn" type="button" (click)="addToCart(product)" title="ใส่รถเข็น {{ product.Product_Price }}.-">
+          <span class="cart-icon"><i class="bi bi-cart-plus"></i></span>
+          <span class="cart-text">ใส่รถเข็น</span>
+          <strong>{{ product.Product_Price }}.-</strong>
         </button>
       </div>
     </div>

@@ -25,6 +25,7 @@ import { Nestle3Component } from './UserSite/Product-details/nestle3/nestle3.com
 import { Minere1Component } from './UserSite/Product-details/minere1/minere1.component';
 import { Minere2Component } from './UserSite/Product-details/minere2/minere2.component';
 import { ProductBoxComponent } from './UserSite/product/product-box/product-box.component';
+import { ProductDetailComponent } from './UserSite/product/product-detail/product-detail.component';
 import { AuthGuard } from './auth.guard';
 import { AdminRegComponent } from './AdminSite/admin-reg/admin-reg.component';
 import { NoAccessComponent } from './no-access/no-access.component';
@@ -60,6 +61,7 @@ const routes: Routes = [
   {path: 'product-details/nestle3',component:Nestle3Component},
   {path: 'product-details/minere1',component:Minere1Component},
   {path: 'product-details/minere2',component:Minere2Component},
+  {path: 'product-details/:id',component:ProductDetailComponent,canActivate: [AuthGuard],data:{roles:['admin','customer','Deliver']}},
   
   {path: 'NoAccess',component:NoAccessComponent},
   {path: 'edit-profile' ,component:EditProfileComponent,canActivate: [AuthGuard],data:{roles:['customer']}},

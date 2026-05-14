@@ -1,104 +1,133 @@
-<app-admin-home/>
-<div class="bg">
-<div class="container">
-    <div class="header">
-        <h2>Dashboard</h2>
+<app-admin-home></app-admin-home>
+
+<main class="dashboard-page">
+  <section class="dashboard-hero">
+    <div>
+      <p class="eyebrow">Namkub Management</p>
+      <h1>Dashboard</h1>
+      <p class="hero-copy">ภาพรวมรายได้ กำไร และยอดขายของร้านน้ำดื่ม</p>
     </div>
 
-    <div class="filter">
-        <div class="headfilter"><h5>Filter</h5></div>
-        <div class="filtercontrol">
-            <div class="form">
-                <label for="month">Month </label>
-                <select name="month" id="month" class="formmonth" [(ngModel)]="selectedMonth">
-                  <option value="1">January</option>
-                  <option value="2">February</option>
-                  <option value="3">March</option>
-                  <option value="4">April</option>
-                  <option value="5">May</option>
-                  <option value="6">June</option>
-                  <option value="7">July</option>
-                  <option value="8">August</option>
-                  <option value="9">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-                
-              </div>
-
-              <div class="form">
-                <div class="form-group"> 
-                    <label for="year">year</label>
-                    <select name="year" id="year" class="formyear">
-                      <option value="1">2024</option>
-                      <option value="2">2023</option>
-                      <option value="3">2022</option>
-                    </select>
-                  </div>
-            </div>
-            
-    <div class="submitFilter">
-        <button type="submit" class="btn btn-primary submit" (click)="submitMonth()">Filter</button>&nbsp;
-        <button type="submit" class="btn btn-primary submit" (click)="reloadPage()">Refresh</button>
-        </div>   
+    <div class="hero-badge">
+      <i class="bi bi-droplet-half"></i>
+      <span>Local data</span>
     </div>
-    
+  </section>
+
+  <section class="filter-card">
+    <div>
+      <p class="eyebrow">Filter</p>
+      <h2>Sales summary</h2>
     </div>
 
-    <div class="showvalue">
-        <div class="col">
-            <div class="showdetail">
-                <h5>Total Income</h5>
-                <h6>{{ AlltimeSum?.[0]?.Income }}.-</h6>
-            </div>
-        </div>
-        <div class="col">
-            <div class="showdetail">
-                <h5>Total Profit</h5>
-                <h6>{{ AlltimeSum?.[0]?.Profit }}.-</h6>
-            </div>
-        </div>
-        <div class="col">
-            <div class="showdetail">
-                <h5>Product Sale</h5>
-                <h6>{{ AlltimeSum?.[0]?.Quantity }}</h6>
-            </div>
-        </div>
-        <div class="col">
-            <div class="showdetail">
-                <h5>Best Sale</h5>
-                <h6>{{ bestsale?.[0]?.Product }}</h6>
-            </div>
-        </div>
-    </div>
-    
+    <div class="filter-controls">
+      <label>
+        <span>Month</span>
+        <select name="month" id="month" [(ngModel)]="selectedMonth">
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </label>
 
-    <div class="showtable">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Month</th>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Income</th>
-              <th>Capital</th>
-              <th>Profit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let sum of summaries | async">
-              <td>{{ sum.No }}</td>
-              <td>{{ sum.Month }}</td>
-              <td>{{ sum.Product }}</td>
-              <td>{{ sum.Quantity }}</td>
-              <td>{{ sum.Income }}</td>
-              <td>{{ sum.Capital }}</td>
-              <td>{{ sum.Profit }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <label>
+        <span>Year</span>
+        <select name="year" id="year">
+          <option value="1">2024</option>
+          <option value="2">2023</option>
+          <option value="3">2022</option>
+        </select>
+      </label>
+
+      <div class="filter-actions">
+        <button type="button" class="primary-action" (click)="submitMonth()">
+          <i class="bi bi-funnel"></i>
+          Filter
+        </button>
+        <button type="button" class="ghost-action" (click)="reloadPage()">
+          <i class="bi bi-arrow-clockwise"></i>
+          Refresh
+        </button>
       </div>
-</div>
-</div>
+    </div>
+  </section>
+
+  <section class="metric-grid">
+    <article class="metric-card income">
+      <i class="bi bi-cash-stack"></i>
+      <div>
+        <span>Total Income</span>
+        <strong>{{ AlltimeSum?.[0]?.Income || 0 }}.-</strong>
+      </div>
+    </article>
+
+    <article class="metric-card profit">
+      <i class="bi bi-graph-up-arrow"></i>
+      <div>
+        <span>Total Profit</span>
+        <strong>{{ AlltimeSum?.[0]?.Profit || 0 }}.-</strong>
+      </div>
+    </article>
+
+    <article class="metric-card quantity">
+      <i class="bi bi-box-seam"></i>
+      <div>
+        <span>Product Sale</span>
+        <strong>{{ AlltimeSum?.[0]?.Quantity || 0 }}</strong>
+      </div>
+    </article>
+
+    <article class="metric-card best-sale">
+      <i class="bi bi-stars"></i>
+      <div>
+        <span>Best Sale</span>
+        <strong>{{ bestsale?.[0]?.Product || '-' }}</strong>
+      </div>
+    </article>
+  </section>
+
+  <section class="table-panel">
+    <div class="table-heading">
+      <div>
+        <p class="eyebrow">Details</p>
+        <h2>Monthly product performance</h2>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Month</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Income</th>
+            <th>Capital</th>
+            <th>Profit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sum of summaries | async">
+            <td>{{ sum.No }}</td>
+            <td>{{ sum.Month }}</td>
+            <td>{{ sum.Product }}</td>
+            <td>{{ sum.Quantity }}</td>
+            <td>{{ sum.Income }}</td>
+            <td>{{ sum.Capital }}</td>
+            <td>{{ sum.Profit }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

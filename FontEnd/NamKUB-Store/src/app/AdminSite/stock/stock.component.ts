@@ -5,6 +5,7 @@ import { NAMKUBAPIService } from '../../Service/namkub-api.service';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class StockComponent {
 
   constructor( private apiservice: NAMKUBAPIService,
                private fb : FormBuilder,
-               private http : HttpClient
+               private http : HttpClient,
+               private route: ActivatedRoute
   ){
     this.RestockForm = this.fb.group({
       Restock_Quantity: [null, [Validators.required]],
@@ -41,6 +43,10 @@ export class StockComponent {
   ngOnInit(): void{
     this.reloadStocks();
     this.reloadRestock();
+    this.route.queryParamMap.subscribe(params => {
+      this.searchQuery1 = params.get('q') || '';
+      this.searchQuery1 ? this.searchstock() : this.reloadStocks();
+    });
   }
 
   @Input() isModalOpen: boolean = false;

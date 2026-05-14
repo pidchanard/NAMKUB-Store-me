@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -25,6 +25,7 @@ export class EditproductComponent {
   constructor(private fb: FormBuilder, 
               private http: HttpClient, 
               private router: Router, 
+              private route: ActivatedRoute,
               private productService: NAMKUBAPIService) {
 
     this.addproductform = this.fb.group({
@@ -130,8 +131,11 @@ export class EditproductComponent {
   @Output() onConfirm = new EventEmitter<any>(); 
 
   ngOnInit(): void {
-    this.reloadProducts();
     this.loadSuppliers();
+    this.route.queryParamMap.subscribe(params => {
+      this.searchQuery = params.get('q') || '';
+      this.searchQuery ? this.searchProducts() : this.reloadProducts();
+    });
   }
 
   openAddProductModal() {

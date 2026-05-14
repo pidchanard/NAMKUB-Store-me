@@ -45,7 +45,7 @@
 .featured-section,
 .home-products,
 .search-heading {
-  width: min(1160px, calc(100% - 32px));
+  width: min(1360px, calc(100% - 32px));
   margin: 0 auto;
 }
 

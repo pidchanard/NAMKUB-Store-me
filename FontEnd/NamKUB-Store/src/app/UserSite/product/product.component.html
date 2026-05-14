@@ -2,14 +2,51 @@
 
 <main class="product-page">
   <div class="product-page-head">
-    <button type="button" routerLink="/home"><i class="bi bi-arrow-left"></i> Back</button>
+    <button type="button" routerLink="/home">
+      <i class="bi bi-arrow-left"></i>
+      Back
+    </button>
     <div>
       <h2>สินค้าทั้งหมด</h2>
       <p>เลือกน้ำดื่มที่ต้องการ แล้วเพิ่มลงรถเข็นได้ทันที</p>
     </div>
   </div>
 
-  <app-product-box></app-product-box>
+  <section class="products-showcase" *ngIf="displayProducts.length; else noProducts">
+    <article class="showcase-card" *ngFor="let product of displayProducts">
+      <button class="product-detail-link" type="button" (click)="goToDetail(product)">
+        <div class="product-image">
+          <img [src]="product.Product_Picture" [alt]="product.Product_Name">
+        </div>
+        <div class="product-content">
+          <h5 [title]="product.Product_Name">{{ product.Product_Name }}</h5>
+          <div class="product-meta">
+            <span>{{ product.Product_Size }} ml</span>
+            <span *ngIf="product.Product_Pack">{{ product.Product_Pack }} ขวด/แพ็ค</span>
+            <strong>{{ product.Product_Price }} บาท</strong>
+          </div>
+        </div>
+      </button>
+
+      <div class="product-actions">
+        <button class="detail-btn" type="button" (click)="goToDetail(product)">ดูรายละเอียด</button>
+        <button class="add-cart-btn" type="button" (click)="addToCart(product)">
+          <span class="cart-icon"><i class="bi bi-cart-plus"></i></span>
+          <span class="cart-text">ใส่รถเข็น</span>
+          <strong>{{ product.Product_Price }}.-</strong>
+        </button>
+      </div>
+    </article>
+  </section>
+
+  <ng-template #noProducts>
+    <div class="no-products">
+      <i class="bi bi-search"></i>
+      <h3>ไม่มีสินค้า</h3>
+      <p *ngIf="searchText">ไม่พบสินค้าที่ตรงกับ "{{ searchText }}"</p>
+      <p *ngIf="!searchText">ยังไม่มีสินค้าที่เปิดขายในตอนนี้</p>
+    </div>
+  </ng-template>
 </main>
 
 <app-footer></app-footer>
