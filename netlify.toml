@@ -1,0 +1,9 @@
+﻿[build]
+  base = "FontEnd/NamKUB-Store"
+  command = "npm run build"
+  publish = "dist/nam-kub-store/browser"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
